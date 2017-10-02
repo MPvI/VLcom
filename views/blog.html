@@ -1,0 +1,26 @@
+<div ng-hide="isLoading" infinite-scroll="requestPost(false)" data-infinite-scroll-distance="10" data-infinite-scroll-immediate-check="false" style="overflow-y: hidden; overflow-scrolling: touch" class="vlcom-container">
+        <article  class="vlcom-blog w3-card-2 w3-margin-4 w3-animate-bottom w3-border" data-ng-repeat="data in loadedData track by $index" data-ng-init="showPost.$index = false">
+                <header class="w3-container w3-card-2" data-ng-click="showPost.$index = ! showPost.$index">
+                        <header class="w3-row">
+                                <div class="vlcom-toggle-btn vlcom-green" style="float: right; border-radius: 9px;" ng-bind="showPost.$index ? '▲' : '▼'"></div>
+                                <h4>{{data.headline}}</h4>
+                        </header>
+                        <footer class="w3-row w3-padding-4">
+                                <div data-ng-click="go('/profile/'+data.user.id)" class="vlcom-green w3-small vlcom-padding w3-card-2" style="float: left; border-radius: 3px; cursor: pointer;">{{data.user.firstname}} {{data.user.lastname}}</div>
+                                <div class="vlcom-grey w3-small vlcom-padding" style="float: right; border-radius: 3px;opacity: 0.6;">{{showPost.$index ? momentExplicit(data.creationStamp) : momentFromNow(data.creationStamp)}}</div>
+                        </footer>
+                </header>
+                <section class="w3-container w3-padding-4" ng-show="showPost.$index" data-ng-bind-html="data.content"></section>
+                <footer class="w3-container w3-padding-4" ng-class="showPost.$index?'vl-card-2-rev':'w3-card-2'">
+                        <div data-ng-repeat="tag in data.tagList" style="float: left;border-radius: 3px;margin-right: 3px; opacity: 0.8; margin-top: 2px;" class="vlcom-grey w3-small vlcom-padding w3-card-2">
+                                {{tag.commitee + " " + tag.location}}
+                        </div>
+                </footer>
+        </article>
+</div>
+<div class="vlcom-container w3-padding-4 w3-center">
+        <div style="margin: auto; overflow-y: hidden;" ng-show="isLoading" class="loader"></div>
+</div>
+<div ng-show="!menuOpen && !filterOpen && canPost" style="position: fixed; bottom: 10px; right: 10px; z-index: 10">
+        <a class="vlcom-grey w3-btn-floating-large" href="#/post" style="text-decoration: none;">+</a>
+</div>

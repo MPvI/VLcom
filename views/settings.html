@@ -1,0 +1,14 @@
+<div class="w3-center vlcom-container w3-padding-4">
+    <div class="w3-padding-4 w3-card-2" ng-hide="isBusy">
+        <div class="w3-padding-4">
+            <ul class="w3-ul">
+                <li data-ng-repeat="setting in settings track by $index">
+                    <input id="setting" class="w3-check" type="checkbox" ng-model="setting.value" ng-true-value="1"  ng-false-value="0" /> {{setting.name}}
+                </li>
+            </ul>
+            <button class="vlcom-btn vlcom-green" ng-click="saveSettings()">Einstellungen speichern</button>
+        </div>
+        <button class="vlcom-btn vlcom-green" ng-click="logout(1)">Logout auf allen Geräten</button>
+    </div>
+    <div style="margin: auto; overflow-y: hidden;" ng-show="isBusy" class="loader"></div>
+</div>

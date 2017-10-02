@@ -1,0 +1,43 @@
+<article class="w3-padding-4 vlcom-container" style="overflow: hidden;">
+    <article class="vlcom-blog w3-card-2 w3-margin-4 w3-animate-bottom w3-border w3-row w3-padding-8">
+        <div class="w3-row">
+        <section class="w3-container w3-half">
+            <img src="img/profilepic.png" style="max-height: 100%;max-width: 100%;" alt="Bild von {{user.vorname}}" />
+        </section>
+
+        <section class="w3-container w3-half">
+            <h2>{{filter.get().user}}</h2>
+            <ul class="w3-ul">
+                <li>{{user.firstname}}</li>
+                <li>{{user.lastname}}</li>
+                <li><a href="mailto:{{user.email}}">{{user.email}}</a> </li>
+            </ul>
+        </section>
+        </div>
+        <div class="w3-row w3-container w3-padding-4">
+            <div data-ng-repeat="tag in user.tagList" style="float: left;border-radius: 3px;margin-right: 3px; opacity: 0.8; margin-top: 2px;" class="vlcom-grey w3-small vlcom-padding w3-card-2">
+                {{tag.commitee + " " + tag.location}}
+            </div>
+        </div>
+    </article>
+
+    <article class="vlcom-blog w3-card-2 w3-margin-4 w3-animate-bottom w3-border" data-ng-repeat="data in loadedData track by $index" data-ng-init="showPost.$index = false">
+        <section class="w3-container w3-card-2" data-ng-click="showPost.$index = ! showPost.$index">
+            <header class="w3-row">
+                <div class="vlcom-toggle-btn vlcom-green" style="float: right; border-radius: 9px;" ng-bind="showPost.$index ? '▲' : '▼'"></div>
+                <h4>{{data.headline}}</h4>
+            </header>
+            <footer class="w3-row w3-padding-4">
+                <div data-ng-click="go('/profile/'+data.user.id)" class="vlcom-green w3-small vlcom-padding w3-card-2" style="float: left; border-radius: 3px; cursor: pointer;">{{data.user.firstname}} {{data.user.lastname}}</div>
+                <div class="vlcom-grey w3-small vlcom-padding" style="float: right; border-radius: 3px;opacity: 0.6;">{{showPost.$index ? momentExplicit(data.creationStamp) : momentFromNow(data.creationStamp)}}</div>
+            </footer>
+        </section>
+        <section class="w3-container w3-padding-4" ng-show="showPost.$index" data-ng-bind-html="data.content"></section>
+        <footer class="w3-container w3-padding-4" ng-class="showPost.$index?'vl-card-2-rev':'w3-card-2'">
+            <div data-ng-repeat="tag in data.tagList" style="float: left;border-radius: 3px;margin-right: 3px; opacity: 0.8; margin-top: 2px;" class="vlcom-grey w3-small vlcom-padding w3-card-2">
+                {{tag.commitee + " " + tag.location}}
+            </div>
+        </footer>
+    </article>
+
+</article>

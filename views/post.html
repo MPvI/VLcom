@@ -1,0 +1,24 @@
+<div class="w3-center vlcom-container w3-padding-4">
+    <div class="w3-card-2" ng-show="!isPosting">
+        <form class="w3-padding-4">
+            <div class="w3-container w3-padding-8">
+                <label class="w3-label w3-text-black-opacity w3-left" for="headline"> Überschrift:</label>
+                <input class="w3-input" type="text" id="headline" data-ng-model="headline" required><br>
+                <label class="w3-label w3-text-black-opacity w3-left" for="content">Artikel:</label>
+                <!-- TODO responsive design for textarea-->
+                <textarea elastic class="w3-input" id="content" ng-model="content" style="resize: none; overflow: hidden"></textarea>
+                <br/>
+                <div data-ng-hide="isEditing">
+                <label class="w3-label w3-text-black-opacity w3-left">Tag:</label><br />
+                    <label class="w3-container w3-left" data-ng-repeat="tag in tagList track by $index">
+                        <input class="w3-check" type="checkbox" ng-model="activatedPostTags[tag.id]"/> {{tag.commitee + " " + tag.location}}
+                    </label>
+                </div>
+            </div>
+            <button data-ng-hide="isEditing" class="vlcom-btn vlcom-green w3-large" ng-click="post()"><i class="fa fa-commenting-o" aria-hidden="true"></i> Veröffentlichen</button>
+            <button data-ng-show="isEditing" class="vlcom-btn vlcom-green w3-large" ng-click="save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Speichern</button>
+        </form>
+
+    </div>
+    <div style="margin: auto; overflow-y: hidden;" ng-show="isPosting" class="loader"></div>
+</div>

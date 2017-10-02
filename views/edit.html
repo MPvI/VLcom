@@ -1,0 +1,17 @@
+<div class="w3-center vlcom-container w3-padding-4">
+    <div class="w3-card-2" ng-show="!isSaving">
+        <form class="w3-padding-4">
+            <div class="w3-container w3-padding-8">
+                <label class="w3-label w3-text-black-opacity w3-left" for="headline"> Überschrift:</label>
+                <input class="w3-input" type="text" id="headline" data-ng-model="headline" required><br>
+                <label class="w3-label w3-text-black-opacity w3-left" for="content">Artikel:</label>
+                <!-- TODO responsive design for textarea-->
+                <textarea elastic class="w3-input" id="content" ng-model="content" style="resize: none; overflow: hidden"></textarea>
+                <br/>
+            </div>
+            <button class="vlcom-btn vlcom-green w3-large" ng-click="save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Speichern</button>
+        </form>
+
+    </div>
+    <div style="margin: auto; overflow-y: hidden;" ng-show="isSaving" class="loader"></div>
+</div>

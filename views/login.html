@@ -1,0 +1,17 @@
+<div class="w3-center vlcom-container w3-padding-4">
+    <div class="w3-card-2" ng-show="!isLoggingIn">
+        <div class="w3-container w3-padding-8">
+            <h1 class="vlcom-green w3-padding-4 w3-padding-left w3-padding-right">Willkommen zu VLcom</h1>
+            <form  data-ng-submit="login()" class="w3-padding-4">
+                <div class="w3-container w3-padding-8">
+                    <label class="w3-label w3-text-black-opacity" for="username">E-Mail-Adresse:</label>
+                    <input class="w3-input" type="email" id="username" name="usr" data-ng-model="usr" required><br>
+                    <label class="w3-label w3-text-black-opacity" for="pwd">Passwort:</label>
+                    <input class="w3-input" id="pwd" type="password" name="pwd" data-ng-model="pwd" required>
+                </div>
+                <button class="vlcom-btn vlcom-green w3-large" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+            </form>
+        </div>
+    </div>
+    <div style="margin: auto; overflow-y: hidden" ng-show="isLoggingIn" class="loader"></div>
+</div>

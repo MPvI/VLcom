@@ -1,0 +1,46 @@
+<div class="w3-center vlcom-container w3-padding-4">
+    <div class="w3-card-2">
+        <div class="w3-container w3-padding-8">
+            <h1 class="vlcom-green w3-padding-4 w3-padding-left w3-padding-right">Willkommen zu VLcom</h1>
+            <form  data-ng-submit="register()" name="myForm" style="margin: auto auto; align-content: center; width: 100%" class="w3-padding-0">
+
+
+                <label class="w3-label w3-text-black-opacity" for="name"> Vorname:</label>
+                <input class="w3-input" type="text" id="name" name="name" data-ng-model="name" required>
+                <label class="w3-label w3-text-black-opacity" for="lastname"> Nachname:</label>
+                <input class="w3-input" type="text" id="lastname" name="lastname" data-ng-model="lastname" required><br>
+                <label class="w3-label w3-text-black-opacity" for="email"> E-Mail:</label>
+                <input class="w3-input" type="email" id="email" name="usr" data-ng-model="email" required><br>
+                <label class="w3-label w3-text-black-opacity" for="pwd">Passwort:</label>
+                <input class="w3-input" id="pwd" type="password" name="pwd" ng-change="checkPwd(pwd)" data-ng-model="pwd" ng-required>
+                <div class="w3-container">
+                  <div class="msg-error msg-block " ng-style="passwordStrength"></div>
+                </div>
+                <label class="w3-label w3-text-black-opacity" for="pwd2">Wiederholung:</label>
+                <input class="w3-input" id="pwd2" type="password" name="pwd2" data-ng-model="pwd2" ng-required pw-check="pwd">
+                <div class="msg-block" ng-show="myForm.$error">
+                <span class="msg-error vlcom-warn w3-label vlcom-green" ng-show="myForm.pwd2.$error.pwmatch">
+                    Die Passwörter stimmen nicht überein.
+                </span>
+                </div>
+
+                <label class="w3-label w3-text-black-opacity" for="mitgliedsnummer"> Mitgliedsnummer:</label>
+                <input class="w3-input" type="number" id="mitgliedsnummer" name="mitgliedsnummer"
+                       data-ng-model="mitgliedsnummer" ng-pattern="mitgliedRegex" ng-change="checkLength(mitgliedsnummer)" required>
+                <div class="msg-block w3-margin-4" ng-hide="mitgliedsnummer2">
+                    <span class="msg-error vlcom-warn w3-label vlcom-green"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Bitte überprüfen Sie ihre Eingabe!</span>
+                </div>
+
+                <div ng-init="voucherShow=false" ng-show="voucherShow">
+                <label class="w3-label w3-text-black-opacity" for="voucher"> Voucher:</label>
+                <input class="w3-input" type="text" id="voucher" name="voucher" data-ng-model="voucher">
+                </div>
+                <div class="w3-container" ng-hide="voucherShow" ng-click="voucherShow = true">
+                  <h4>Add voucher</h4>
+                </div>
+
+                <button class="vlcom-btn vlcom-green" type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrieren</button>
+            </form>
+        </div>
+    </div>
+</div>
